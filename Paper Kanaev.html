@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Практическая работа 7</title>
+      <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+      <style>
+.container {
+      width: 1200px;
+      background-color:bisque;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column; 
+}
+.box {
+      width: 95%;
+      border: 2px solid white;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+}
+.box2 {
+      justify-content: center;
+}
+#myImage {
+      transition: transform 1s;
+}
+#myImage2 {
+      width: 250px;
+}
+.item {
+      margin: 10px;
+      width: 360px;
+      padding: 10px;
+      border: 2px solid white;      
+      background-color: aqua;
+      text-align: center;
+}
+.item1, .item3{
+      width: 100px;
+      align-items: center;
+      
+}
+.item2 {
+      background-color:bisque;
+      border: none;
+}
+.item7 {
+      background-color:bisque;
+      border: none;
+}
+      </style>
+</head>
+<body>
+      <div class="container">
+            <div class="box box1">
+                  <div class="item item1"><img src="https://pub-static.fotor.com/static/web/lib/fotor-bundle/9d3a9d230faf9f901b16.svg" id="item1"></div>
+                  <div class="item item2"></div>
+                  <div class="item item3"><button id="button1" onclick="changeButtonColor()">Цвет</button></div>
+            </div>
+            <div class="box box2"><img id="myImage" src="https://travel-or-die.ru/wp-content/uploads/2018/03/Obzornaya-ekskursiya-po-Moskve.jpg"></div>
+            <div class="box box3">
+                  <div class="item item4"><img id="myImage2" src="https://www.yamdiet.com/wp-content/uploads/1679471160u1nwcmbtbk.jpg"></div>
+                  <div class="item item5"><span class="star1">&#9733;</span><span class="star2">&#9733;</span><span class="star3">&#9733;</span></div>
+                  <div class="item item6"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSswn7hQlrd5MIHJyGMzXXFZrj2d3_hv4LSjRRZiF-akQ&s"></div>
+            </div>
+            <div class="box box4">
+                  <div class="item item7"></div>
+                  <div class="item item8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                  <div class="item item9"><button id="reloadButton">&#11093;</button></div>
+            </div>
+      </div>
+      <script>
+            $(document).ready(function() {
+                  $(".item1").click(function() {
+                        $(this).css("transform", "scale(3)");
+                        alert('Вы нажали логотип');
+                  });
+            });
+
+            function changeButtonColor() {
+                  var button = document.getElementById("button1");
+                  if (button.style.backgroundColor === "purple") {
+                        button.style.backgroundColor = "orange";
+                  } else {
+                        button.style.backgroundColor = "purple";
+                  }
+            }
+
+            $(document).ready(function(){
+            $('#reloadButton').click(function(){
+                location.reload();
+                alert('Страница перезагружена');
+                  });
+            });
+
+            $(document).ready(function(){
+            $('#myImage').click(function(){
+                $(this).css('transform', 'scale(0)');
+                setTimeout(function(){
+                    $('#myImage').css('transform', 'scale(1)');
+                }, 2000);
+            });
+            });
+
+            $(document).ready(function(){
+            $('#myImage2').click(function(){
+                var currentImage = $(this).attr('src');
+                var nextImage = 'https://static.insales-cdn.com/r/J2nx0N3D6nA/rs:fit:1000:1000:1/plain/images/products/1/6307/233560227/appleaid13640.jpg';
+                $(this).attr('src', nextImage);
+                  });
+            });
+
+            $(document).ready(function() {
+            $('.item8').click(function() {
+                  $(this).empty();
+                  });
+            });
+
+            $(document).ready(function() {
+            $('.item6').click(function() {
+            $(this).fadeOut('slow', function() {
+            $(this).fadeIn('slow');
+                  });
+                  });
+            });
+
+            $(document).ready(function() {
+            $('.star1').fadeOut('slow');
+
+            $('.star2').css({
+            'font-size': '36px',
+            'color': 'red',
+            });
+
+            setInterval(function() {
+            $('.star3').fadeOut('slow').fadeIn('slow');
+            }, 1000);
+            });
+      </script>
+</body>
+</html>
